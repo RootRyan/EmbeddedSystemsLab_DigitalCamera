@@ -8,14 +8,9 @@
 #ifndef Buttons_h
 #define Buttons_h 1
 
-extern bool Alarm_active;
+#include <stdint.h>
 
 void Buttons_Init(void);
-
-uint32_t Buttons_Hours(void);
-uint32_t Buttons_Minutes(void);
-bool Buttons_SetAlarmMode(void);
-bool Buttons_Stopwatch(void);
-void Buttons_10ms_Handler(void);
+uint32_t Buttons_getProperty(void);
 
 #endif

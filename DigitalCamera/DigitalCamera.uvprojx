@@ -458,6 +458,81 @@
               <FileType>1</FileType>
               <FilePath>.\UltimateMain.c</FilePath>
             </File>
+            <File>
+              <FileName>Bool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bool.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buttons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Buttons.h</FilePath>
+            </File>
+            <File>
+              <FileName>esp8266.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\esp8266.h</FilePath>
+            </File>
+            <File>
+              <FileName>Graphics.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Graphics.h</FilePath>
+            </File>
+            <File>
+              <FileName>OV7670.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\OV7670.h</FilePath>
+            </File>
+            <File>
+              <FileName>PLL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PLL.h</FilePath>
+            </File>
+            <File>
+              <FileName>PortF.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PortF.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PWM.h</FilePath>
+            </File>
+            <File>
+              <FileName>Speaker.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Speaker.h</FilePath>
+            </File>
+            <File>
+              <FileName>ST7735.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ST7735.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Timer2.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Timer3.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Timers.h</FilePath>
+            </File>
+            <File>
+              <FileName>UART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\UART.h</FilePath>
+            </File>
+            <File>
+              <FileName>Unified_Port_Init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Unified_Port_Init.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -469,5 +544,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>DigitalCamera</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
