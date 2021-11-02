@@ -9,6 +9,7 @@
 #define _OV7670_h_
 
 #include <stdint.h>
+#include "Bool.h"
 
 typedef enum {
         PIXEL_RGB565,
@@ -29,8 +30,8 @@ typedef enum {
         PLL_MULTIPLIER_X8 = 3
 } PLLMultiplier;
 
-uint32_t init();
-uint32_t setRegister(uint8_t addr, uint8_t val);
+bool init();
+bool setRegister(uint8_t addr, uint8_t val);
 uint8_t readRegister(uint8_t addr);
 void setRegisterBitsOR(uint8_t addr, uint8_t bits);
 void setRegisterBitsAND(uint8_t addr, uint8_t bits);
@@ -38,7 +39,7 @@ void setManualContrastCenter(uint8_t center);
 void setContrast(uint8_t contrast);
 void setBrightness(uint8_t birghtness);
 void reversePixelBits();
-void showColorBars(uint32_t transparent);
+void showColorBars(bool transparent);
 
 inline void waitForVsync(void) __attribute__((always_inline));
 inline void waitForPixelClockRisingEdge(void) __attribute__((always_inline));
@@ -49,7 +50,7 @@ inline void ignoreHorizontalPaddingRight(void) __attribute__((always_inline));
 inline void readPixelByte(uint8_t) __attribute__((always_inline));
 
 void ignoreVerticalPadding();
-uint32_t setUpCamera();
+bool setUpCamera();
 
 void waitForVsync();
 void waitForPixelClockRisingEdge();
@@ -63,7 +64,7 @@ void readPixelByte(uint8_t);
 //registers
 uint32_t resetSettings();
 void setRegisters(const uint32_t *registerData);
-uint32_t setRegister(uint8_t addr, uint8_t val);
+bool setRegister(uint8_t addr, uint8_t val);
 uint8_t readRegister(uint8_t addr);
 void setRegisterBitsOR(uint8_t addr, uint8_t bits);
 void setRegisterBitsAND(uint8_t addr, uint8_t bits);
