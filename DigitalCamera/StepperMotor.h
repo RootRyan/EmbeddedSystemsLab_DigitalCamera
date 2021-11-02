@@ -27,14 +27,16 @@ struct state{
 
 typedef const struct State State_t;
 
-#define S5  &fsm[0]
-#define S6  &fsm[1]
-#define S10 &fsm[2]
-#define S9  &fsm[3]
+#define S1  &fsm[0]
+#define S2  &fsm[1]
+#define S4 &fsm[2]
+#define S8  &fsm[3]
+#define S16 &fsm[4]
 
 State_t fsm[4]={
-  {5, T100msec, S5, S6, S9, S5},
-  {6, T100msec, S9,S10, S5, S6},
-  {10,T100msec,S10, S9, S6,S10},
-  {9, T100msec, S9, S5,S10, S9}
+  {1, T100msec, S1, S2, S16, S1},
+  {2, T100msec, S2, S4, S1, S2},
+  {4, T100msec, S4, S8, S2, S4},
+  {8, T100msec, S8, S16, S4, S8},
+  {16,T100msec, S16, S1, S8, S16}
 };
