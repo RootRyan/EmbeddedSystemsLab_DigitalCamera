@@ -29,11 +29,11 @@ typedef const struct State State_t;
 
 #define S1  &fsm[0]
 #define S2  &fsm[1]
-#define S4 &fsm[2]
+#define S4  &fsm[2]
 #define S8  &fsm[3]
 #define S16 &fsm[4]
 
-State_t fsm[4]={
+State_t fsm[5]={
   {1, T100msec, S1, S2, S16, S1},
   {2, T100msec, S2, S4, S1, S2},
   {4, T100msec, S4, S8, S2, S4},
