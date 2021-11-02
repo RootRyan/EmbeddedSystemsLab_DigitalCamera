@@ -5,9 +5,6 @@
 
 volatile int delay;
 
-	uint8_t current = 0; //temp variables
-	uint8_t input_t = 0;
-
 void EnableInterrupts(void);
 // edit the following only if you need to move pins from PA4, PE3-0      
 // logic analyzer on the real board
@@ -45,12 +42,12 @@ int Stepper_Check(void){
 // next		
 		GPIO_PORTF_DATA_R ^= 0x02; //toggle the heartbeat LED
 		
-		GPIO_PORTE_DATA_R = fsm[current].Out; //output to the motor
+		GPIO_PORTE_DATA_R = fsm[currentState].Out; //output to the motor
 		//GPIO_PORTB_DATA_R = fsm[current].LED; //toggle the light when it is on
 		
 		//SysTick_Wait10ms(FSM[current].delay); //delay for how ever long each state runs for
 		
 		input_t = (GPIO_PORTA_DATA_R)/16;		//take the inputs and shift them right
-		current = fsm[current].Next[input_t]; //use the new value as the index of the next state graph
+		currentState = fsm[currentState].Next[input_t]; //use the new value as the index of the next state graph
   }
 }
