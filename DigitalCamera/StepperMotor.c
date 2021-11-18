@@ -51,3 +51,21 @@ int Stepper_Check(void){
 		currentState = fsm[currentState].Next[input_t]; //use the new value as the index of the next state graph
   }
 }
+
+
+void StepperMotor_Init() {
+  SYSCTL_RCGCGPIO_R |= 0x3A; //initialize each port used
+	delay++;
+
+	GPIO_PORTE_DIR_R |= 0x1F;
+	GPIO_PORTE_DEN_R |= 0x1F;
+
+	GPIO_PORTD_DIR_R &= 0xFC;
+	GPIO_PORTD_DEN_R |= 0x03;
+
+	GPIO_PORTB_DIR_R |= 0x40;
+	GPIO_PORTB_DEN_R |= 0x40;
+
+	GPIO_PORTF_DIR_R |= 0x02;
+	GPIO_PORTF_DEN_R |= 0x02;
+}

@@ -40,3 +40,6 @@ State_t fsm[5]={
   {8, T100msec, S8, S16, S4, S8},
   {16,T100msec, S16, S1, S8, S16}
 };
+
+
+void StepperMotor_Init(void);
