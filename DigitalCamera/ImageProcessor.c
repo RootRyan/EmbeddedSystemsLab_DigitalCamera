@@ -45,13 +45,10 @@ void CameraSetup(){
 
 void StreamImage() {
   bufferPos = 0;
-  if (readImageStartFunctionPtr) {
-  	(*readImageStartFunctionPtr)();
-  }
 
   uint8_t r=0, g=0, b=0;
   uint16_t index = 0;
-	//Wait for vsync it is on pin 3 (counting from 0) portD
+	//Wait for vsync
 	while(!(PB1&1)){};//wait for high
   // read image
   for (int y = 0; y < 120; y++) {

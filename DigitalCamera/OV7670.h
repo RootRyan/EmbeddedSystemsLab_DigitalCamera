@@ -14,7 +14,7 @@
 
 #define OV7670_XCLK_HZ 16000000 ///< XCLK to camera, 8-24 MHz
 
-void CameraInit(void);
+bool CameraInit(void);
 bool ResetOV7670Registers(void);
 void SetManualContrastCenter(uint8_t);
 void SetContrast(uint8_t);

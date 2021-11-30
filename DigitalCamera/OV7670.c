@@ -58,20 +58,21 @@ void ReversePixelBits(void);
 void SetShowColorBar(bool);
 
 uint8_t internalClockPreScaler = 4;
-uint8_t pllMultiplier = 0;
-void CameraInit(){
-	I2C_Init(); //Should put in main
+uint8_t pllMultiplier = 5;
+bool CameraInit(){
+	bool failure = false;
 	//Make sure IO is initialized before anything below is called
 	//Potential added delay
-	WriteDefaults();
-	SetRGB565();
-	SetQQVGA();
+	failure |= WriteDefaults();
+	failure |= SetRGB565();
+	failure |= SetQQVGA();
 	
 	SetDisablePixelClockDuringBlankLines();
   SetDisableHREFDuringBlankLines();
   SetInternalClockPreScaler(internalClockPreScaler);
   SetPLLMultiplier(pllMultiplier);
 	
+	return failure;
 }
 
 bool ResetOV7670Registers(){
@@ -225,7 +226,7 @@ bool SetQQVGA(){
   failed |= I2C_Send1(REG_VREF,0);
   failed |= I2C_Send1(REG_HSTART,hstart >> 3);
   failed |= I2C_Send1(REG_HSTOP,hstop >> 3);
-  failed |= I2C_Send1(REG_HREF,0b00000000 | (hstart & 0b111) | ((hstop & 0b111) << 3));
+  failed |= I2C_Send1(REG_HREF,0x00 | (hstart & 0x7) | ((hstop & 0x7) << 3));
 
   failed |= I2C_Send1(REG_COM3, COM3_DCWEN); // enable downsamp/crop/window
   failed |= I2C_Send1(REG_COM14, 0x1a);        // divide by 4
@@ -255,7 +256,7 @@ void SetInternalClockPreScaler(uint8_t preScaler) {
 }
 
 void SetPLLMultiplier(uint8_t multiplier) {
-  uint8_t mask = 0b11000000;
+  uint8_t mask = 0xC0;
   uint8_t currentValue = I2C_Recv(DBLV);
   I2C_Send1(DBLV, (currentValue & ~mask) | (multiplier << 6));
 }

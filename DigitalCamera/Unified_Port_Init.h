@@ -5,7 +5,10 @@
 #define PF2       (*((volatile uint32_t *)0x40025010))    // BLUE LED
 #define PF3       (*((volatile uint32_t *)0x40025020))    // GREEN LED
 #define PF4       (*((volatile uint32_t *)0x40025040))    // SW1
-
+#define PF5       (*((volatile uint32_t *)0x40025080))
+#define PF6       (*((volatile uint32_t *)0x40025100))
+#define PF7       (*((volatile uint32_t *)0x40025200))
+	
 // PORT-E
 //
 #define PE0       (*((volatile uint32_t *)0x40024004))
@@ -14,6 +17,8 @@
 #define PE3       (*((volatile uint32_t *)0x40024020))    // Heartbeat LED
 #define PE4       (*((volatile uint32_t *)0x40024040))
 #define PE5       (*((volatile uint32_t *)0x40024080))
+#define PE6       (*((volatile uint32_t *)0x40024100))
+#define PE7       (*((volatile uint32_t *)0x40024200))
 
 // PORT-D
 //
@@ -21,11 +26,17 @@
 #define PD1       (*((volatile uint32_t *)0x40007008))
 #define PD2       (*((volatile uint32_t *)0x40007010))
 #define PD3       (*((volatile uint32_t *)0x40007020))
+#define PD4       (*((volatile uint32_t *)0x40007040))
+#define PD5       (*((volatile uint32_t *)0x40007080))
 #define PD6       (*((volatile uint32_t *)0x40007100))
 #define PD7       (*((volatile uint32_t *)0x40007200))
 
 // PORT-C Lab Board switches
 //
+#define PC0       (*((volatile uint32_t *)0x40006004))    
+#define PC1       (*((volatile uint32_t *)0x40006008))    
+#define PC2       (*((volatile uint32_t *)0x40006010))    
+#define PC3       (*((volatile uint32_t *)0x40006020))   
 #define PC4       (*((volatile uint32_t *)0x40006040))    // UP    and Logic Analyzer JP2-15
 #define PC5       (*((volatile uint32_t *)0x40006080))    // RIGHT and Logic Analyzer JP2-13
 #define PC6       (*((volatile uint32_t *)0x40006100))    // LEFT  and Logic Analyzer JP2-11
