@@ -11,23 +11,81 @@
 #include "Bool.h"
 #include <stdio.h>
 #include <stdbool.h>
-#include "ov7670Camera.h"
+#include "OV7670.h"
 
-extern int OV7670_read_register(uint8_t reg);
+//vsync
+#define PB1       (*((volatile uint32_t *)0x40005008))
 
-void displayCameraCapture(){
-	//interface the bmp/camera data with the ST7735 LCD to display a specific frame (this frame being the bmp image acquired from the camera)
-	//occurs directly after taking a picture
-	//different from displaying a previously taken picture
+//pixel data bits 0-3
+#define PD4       (*((volatile uint32_t *)0x40007040))
+#define PD5       (*((volatile uint32_t *)0x40007080))
+#define PD6       (*((volatile uint32_t *)0x40007100))
+#define PD7       (*((volatile uint32_t *)0x40007200))
+
+//pixel data bits 4-7
+#define PB4       (*((volatile uint32_t *)0x40005040))     
+#define PB5       (*((volatile uint32_t *)0x40005080))     
+#define PB6       (*((volatile uint32_t *)0x40005100))     
+#define PB7       (*((volatile uint32_t *)0x40005200))
+
+void (*bufferFullFunctionPtr)(uint8_t *);
+void (*readImageStartFunctionPtr)(void);
+void (*readImageStopFunctionPtr)(void);
+uint16_t bufferPos = 0;
+static const uint16_t BUFFER_SIZE = 480;
+uint8_t buffer[BUFFER_SIZE];
+void CameraSetup(){
+	bufferPos = 0;
+	bufferFullFunctionPtr = 0;
+	readImageStartFunctionPtr = 0;
+	readImageStopFunctionPtr = 0;
+	CameraInit();
 }
 
-bool storeImage(){
-	//interface the bmp/camera data with the ST7735 SDC Breakout Module --> Specifically for storing on the SDC
-	//may be called from a button/main logic method (when the user specifies they want to store an image to the SDC)
-}
+void captureImage() {
+	
+  bufferPos = 0;
+  if (readImageStartFunctionPtr) {
+  	(*readImageStartFunctionPtr)();
+  }
 
-bool takePicture(){
-	//called from the button/blynk/its relevant file in order to specify that a frame/image capture should be taken
+  uint8_t r=0, g=0, b=0, d1 = 0, d2 = 0, d3 = 0, d4 = 0;
+  uint16_t index = 0;
+	//Wait for vsync it is on pin 3 (counting from 0) portD
+	while(!(PB1&1)){};//wait for high
+  // read image
+  for (int y = 0; y < 120; y++) {
+  	for (int x = 0; x < 160; x++) {
+			while((PB1&1)){};//wait for low
+			b=((PB7<<7)|(PB6<<6)|(PB5<<5)|(PB4<<4)|(PB7<<3)|(PB6<<2)|(PB5<<1)|(PB4));
+			g=0;
+			r=0;
+			while(!(PB1&1)){};//wait for high
+  	  b = (d1 & 0x1F) << 3;
+			g = (((d1 & 0xE0) >> 3) | ((d2 & 0x07) << 5));
+  	  r = (d2 & 0xF8);
+
+      index++;
+
+
+  		buffer[bufferPos] = r;
+  		buffer[bufferPos + 1] = g;
+  		buffer[bufferPos + 2] = b;
+  		bufferPos += 3;
+  		if (bufferPos >= BUFFER_SIZE) {
+  			if (bufferFullFunctionPtr) {
+  				(*bufferFullFunctionPtr)(buffer);
+  			}
+
+  			bufferPos = 0;
+  		}
+  	}
+  }
+
+  if (readImageStopFunctionPtr) {
+  	(*readImageStopFunctionPtr)();
+  }
+
 }
 
 bool timedPicture(uint32_t seconds){
