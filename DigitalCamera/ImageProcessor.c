@@ -34,22 +34,22 @@ void (*readImageStopFunctionPtr)(void);
 uint16_t bufferPos = 0;
 static const uint16_t BUFFER_SIZE = 480;
 uint8_t buffer[BUFFER_SIZE];
+
 void CameraSetup(){
 	bufferPos = 0;
 	bufferFullFunctionPtr = 0;
 	readImageStartFunctionPtr = 0;
-	readImageStopFunctionPtr = 0;
+	//readImageStopFunctionPtr = 0; --> Set to display image on screen
 	CameraInit();
 }
 
-void captureImage() {
-	
+void StreamImage() {
   bufferPos = 0;
   if (readImageStartFunctionPtr) {
   	(*readImageStartFunctionPtr)();
   }
 
-  uint8_t r=0, g=0, b=0, d1 = 0, d2 = 0, d3 = 0, d4 = 0;
+  uint8_t r=0, g=0, b=0;
   uint16_t index = 0;
 	//Wait for vsync it is on pin 3 (counting from 0) portD
 	while(!(PB1&1)){};//wait for high
@@ -57,13 +57,13 @@ void captureImage() {
   for (int y = 0; y < 120; y++) {
   	for (int x = 0; x < 160; x++) {
 			while((PB1&1)){};//wait for low
-			b=((PB7<<7)|(PB6<<6)|(PB5<<5)|(PB4<<4)|(PB7<<3)|(PB6<<2)|(PB5<<1)|(PB4));
-			g=0;
-			r=0;
+			r = ((PB7<<4)|(PB6<<3)|(PB5<<2)|(PB4<<1)|(PD7)) & 0x1F;
+			g = ((PD6<<4)|(PD5<<3)|(PD4<<2)) & 0x1F;
 			while(!(PB1&1)){};//wait for high
-  	  b = (d1 & 0x1F) << 3;
-			g = (((d1 & 0xE0) >> 3) | ((d2 & 0x07) << 5));
-  	  r = (d2 & 0xF8);
+			while((PB1&1)){};//wait for low
+  	  g = (g|(PB7<<2)|(PB6<<1)|(PB5)) & 0x1F;
+			b = ((PB4<<4)|(PD7<<3)|(PD6<<2)|(PD5<<1)|(PD4)) & 0x1F;
+			while(!(PB1&1)){};//wait for high
 
       index++;
 
@@ -73,22 +73,17 @@ void captureImage() {
   		buffer[bufferPos + 2] = b;
   		bufferPos += 3;
   		if (bufferPos >= BUFFER_SIZE) {
-  			if (bufferFullFunctionPtr) {
-  				(*bufferFullFunctionPtr)(buffer);
-  			}
-
   			bufferPos = 0;
   		}
   	}
   }
 
-  if (readImageStopFunctionPtr) {
-  	(*readImageStopFunctionPtr)();
-  }
+  //call to display on screen
 
 }
 
 bool timedPicture(uint32_t seconds){
+	return false;
 	//called from the button/blynk/its relevant file in order to specify that a frame/image capture should be taken with a countdown delay
 	//requires initializing a system timer that is responsible for said countdowns
 	//might be better implemented in another file since the timed picture may require interfacing the ST7735, speaker, and flash led

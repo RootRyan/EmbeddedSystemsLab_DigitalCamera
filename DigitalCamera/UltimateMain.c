@@ -12,6 +12,9 @@
 #include "Speaker.h"
 #include "ImageProcessor.h"
 #include "I2C0.h"
+#include "esp8266.h"
+#include "Timer2.h"
+#include "Timer3.h"
 //#include "StepperMotor.h"
 #include "Unified_Port_Init.h"
 #include "../inc/LaunchPad.h"
@@ -42,7 +45,7 @@ int main(void){
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	Camera
+	CameraSetup();
 
 	ESP8266_Init();
 	ESP8266_Reset();
@@ -57,7 +60,7 @@ int main(void){
 
 	EnableInterrupts();
 	while(1){
-
+		StreamImage();
 
 		if(motorOn) {
 			GPIO_PORTE_DATA_R = fsm[currentState].Out; //output to the motor

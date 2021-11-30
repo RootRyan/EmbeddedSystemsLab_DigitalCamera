@@ -14,9 +14,7 @@
 
 void CameraSetup(void);
 
-void displayCameraCapture(void);
-
-bool storeImage(void);
+void StreamImage(void);
 
 bool takePicture(void);
 
