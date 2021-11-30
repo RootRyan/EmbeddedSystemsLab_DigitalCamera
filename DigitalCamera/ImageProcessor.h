@@ -12,6 +12,8 @@
 #include <stdint.h>
 #include "Bool.h"
 
+void CameraSetup(void);
+
 void displayCameraCapture(void);
 
 bool storeImage(void);

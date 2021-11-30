@@ -10,7 +10,9 @@
 #include "Timers.h"
 #include "PWM.h"
 #include "Speaker.h"
-#include "StepperMotor.h"
+#include "ImageProcessor.h"
+#include "I2C0.h"
+//#include "StepperMotor.h"
 #include "Unified_Port_Init.h"
 #include "../inc/LaunchPad.h"
 #include "../inc/CortexM.h"
@@ -34,13 +36,13 @@ int main(void){
 	PLL_Init(Bus80MHz);
 	Unified_Port_Init();
 	ST7735_InitR(INITR_REDTAB);
-	StepperMotor_Init();
+	//StepperMotor_Init();
 	
 	I2C_Init();
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	OV7670_begin(OV7670_COLOR_RGB, OV7670_SIZE_DIV4, 15);
+	Camera
 
 	ESP8266_Init();
 	ESP8266_Reset();
