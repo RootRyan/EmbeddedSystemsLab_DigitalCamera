@@ -22,20 +22,13 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
-// I2C0SCL connected to PB2 and to SCL Pin
-// I2C0SDA connected to PB3 and to SDA Pin
+// I2C0SCL connected to PB2 and to pin 4 of HMC6352 compass or pin 3 of TMP102 thermometer
+// I2C0SDA connected to PB3 and to pin 3 of HMC6352 compass or pin 2 of TMP102 thermometer
 // SCL and SDA lines pulled to +3.3 V with 10 k resistors (part of breakout module)
-/* Pin Connections
-VSYNC/VS - PB1
-RRST/RESET - PA1
-PCLCK - PIN12
-SIOD/SDA - PB3 (I2C data) - 10K resistor to 3.3V
-SIOC/SCL - PB2 (I2C clock) - 10K resistor to 3.3V
-D0..D3 - PD4..7 (pixel data bits 0..3)
-D4..D7 - PB4..7 (pixel data bits 4..7)
-*/
+// ADD0 pin of TMP102 thermometer connected to GND
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
+
 
 #define I2C_MCS_ACK             0x00000008  // Data Acknowledge Enable
 #define I2C_MCS_DATACK          0x00000008  // Acknowledge Data

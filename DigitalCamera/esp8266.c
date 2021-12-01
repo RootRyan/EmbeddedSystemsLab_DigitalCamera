@@ -23,7 +23,7 @@
 // http://www.ti.com/lit/ds/symlink/lm2937-3.3.pdf
 #include <stdint.h>
 #include <string.h>
-#include "inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "UART.h"
 #include "ST7735.h"
 #include "esp8266.h"

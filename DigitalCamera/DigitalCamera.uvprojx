@@ -384,6 +384,11 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
+              <FileName>Blynk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Blynk.c</FilePath>
+            </File>
+            <File>
               <FileName>Buttons.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Buttons.c</FilePath>
@@ -397,6 +402,16 @@
               <FileName>Graphics.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Graphics.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\I2C0.c</FilePath>
+            </File>
+            <File>
+              <FileName>ImageProcessor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ImageProcessor.c</FilePath>
             </File>
             <File>
               <FileName>OV7670.c</FileName>
@@ -429,6 +444,11 @@
               <FilePath>.\ST7735.c</FilePath>
             </File>
             <File>
+              <FileName>StepperMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\StepperMotor.c</FilePath>
+            </File>
+            <File>
               <FileName>Timer2.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Timer2.c</FilePath>
@@ -449,14 +469,14 @@
               <FilePath>.\UART.c</FilePath>
             </File>
             <File>
-              <FileName>Unified_Port_Init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Unified_Port_Init.c</FilePath>
-            </File>
-            <File>
               <FileName>UltimateMain.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\UltimateMain.c</FilePath>
+            </File>
+            <File>
+              <FileName>Unified_Port_Init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Unified_Port_Init.c</FilePath>
             </File>
             <File>
               <FileName>Bool.h</FileName>
@@ -479,9 +499,29 @@
               <FilePath>.\Graphics.h</FilePath>
             </File>
             <File>
+              <FileName>I2C0.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\I2C0.h</FilePath>
+            </File>
+            <File>
+              <FileName>ImageProcessor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ImageProcessor.h</FilePath>
+            </File>
+            <File>
+              <FileName>menus.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\menus.h</FilePath>
+            </File>
+            <File>
               <FileName>OV7670.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\OV7670.h</FilePath>
+            </File>
+            <File>
+              <FileName>OV7670RegisterAddresses.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\OV7670RegisterAddresses.h</FilePath>
             </File>
             <File>
               <FileName>PLL.h</FileName>
@@ -507,6 +547,11 @@
               <FileName>ST7735.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ST7735.h</FilePath>
+            </File>
+            <File>
+              <FileName>StepperMotor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StepperMotor.h</FilePath>
             </File>
             <File>
               <FileName>Timer2.h</FileName>

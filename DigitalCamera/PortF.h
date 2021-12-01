@@ -28,8 +28,8 @@
 #define PF3       (*((volatile uint32_t *)0x40025020))
 #define PF4       (*((volatile uint32_t *)0x40025040))
 #define SWITCHES  (*((volatile uint32_t *)0x40025044))
-#define SW1       0x10    // on the left side of the Launchpad board
-#define SW2       0x01    // on the right side of the Launchpad board
+//#define SW1       0x10    // on the left side of the Launchpad board
+//#define SW2       0x01    // on the right side of the Launchpad board
 #define RED       0x02
 #define BLUE      0x04
 #define GREEN     0x08

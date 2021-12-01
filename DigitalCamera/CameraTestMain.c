@@ -1,15 +1,14 @@
 //CameraTestMain.c
 
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "PLL.h"
 #include "ST7735.h"
 #include "Bool.h"
 #include <stdio.h>
 #include <string.h>
 #include "Unified_Port_Init.h"
-#include "ov7670Camera.h"
-#include "../inc/I2C0.h"
+#include "I2C0.h"
 
 #define PF2             (*((volatile uint32_t *)0x40025010))
 
@@ -27,7 +26,7 @@ int main(void){
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	OV7670_begin(OV7670_COLOR_RGB, OV7670_SIZE_DIV4, 15);
+	//OV7670_begin(OV7670_COLOR_RGB, OV7670_SIZE_DIV4, 15);
 	PF2 = 0;
 	EnableInterrupts();
 	

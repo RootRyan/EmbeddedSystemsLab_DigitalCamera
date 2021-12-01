@@ -17,7 +17,7 @@ D4..D7 - PB4..7 (pixel data bits 4..7)
 */
 
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include <stdio.h>
 #include "Bool.h"
 #include "I2C0.h"

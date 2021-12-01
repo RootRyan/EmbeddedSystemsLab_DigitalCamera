@@ -15,8 +15,8 @@
 // ---------------------------------------------------------------------------
 
 
-#include "inc/tm4c123gh6pm.h"
-#include "inc/Unified_Port_Init.h"
+#include "tm4c123gh6pm.h"
+#include "Unified_Port_Init.h"
 #include <stdint.h>
 
 // ---------------------------    Port_Init     ------------------------------

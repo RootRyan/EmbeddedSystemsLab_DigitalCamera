@@ -1,6 +1,17 @@
-./objects/lab03main.o: Lab03Main.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\inc\tm4c123gh6pm.h \
-  PLL.h ST7735.h Bool.h Buttons.h Graphics.h Timers.h PWM.h Speaker.h \
-  Unified_Port_Init.h ..\inc\LaunchPad.h ..\inc\CortexM.h ..\inc\TExaS.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
+.\objects\lab03main.o: Lab03Main.c
+.\objects\lab03main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\lab03main.o: ..\../inc/tm4c123gh6pm.h
+.\objects\lab03main.o: PLL.h
+.\objects\lab03main.o: ST7735.h
+.\objects\lab03main.o: Bool.h
+.\objects\lab03main.o: Buttons.h
+.\objects\lab03main.o: Graphics.h
+.\objects\lab03main.o: Timers.h
+.\objects\lab03main.o: PWM.h
+.\objects\lab03main.o: Speaker.h
+.\objects\lab03main.o: Unified_Port_Init.h
+.\objects\lab03main.o: ..\../inc/LaunchPad.h
+.\objects\lab03main.o: ..\../inc/CortexM.h
+.\objects\lab03main.o: ..\../inc/TExaS.h
+.\objects\lab03main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\lab03main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

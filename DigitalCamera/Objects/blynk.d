@@ -2,7 +2,7 @@
 .\objects\blynk.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\blynk.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\blynk.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\blynk.o: ..\inc/tm4c123gh6pm.h
+.\objects\blynk.o: tm4c123gh6pm.h
 .\objects\blynk.o: ST7735.h
 .\objects\blynk.o: PLL.h
 .\objects\blynk.o: Timer2.h

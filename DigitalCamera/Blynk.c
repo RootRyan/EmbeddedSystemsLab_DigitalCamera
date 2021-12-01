@@ -37,7 +37,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
-#include "inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "ST7735.h"
 #include "PLL.h"
 #include "Timer2.h"
@@ -252,8 +252,8 @@ void Blynk_to_TM4C(void){int j; char data;
 }
 
 void SendInformation(void){
-  uint32_t thisF;
-  thisF = PortF_Input();
+  //uint32_t thisF;
+  //thisF = PortF_Input();
 // your account will be temporarily halted if you send too much data
   /*if(thisF != LastF){
     TM4C_to_Blynk(74, thisF);  // VP74

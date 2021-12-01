@@ -1,7 +1,7 @@
 // UltimateMain.c
 
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "PLL.h"
 #include "ST7735.h"
 #include "Bool.h"
@@ -17,9 +17,6 @@
 #include "Timer3.h"
 //#include "StepperMotor.h"
 #include "Unified_Port_Init.h"
-#include "../inc/LaunchPad.h"
-#include "../inc/CortexM.h"
-#include "../inc/TExaS.h"
 #include <stdio.h>
 #include <string.h>
 
