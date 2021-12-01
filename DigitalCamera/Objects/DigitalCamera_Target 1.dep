@@ -1,135 +1,0 @@
-Dependencies for Project 'DigitalCamera', Target 'Target 1': (DO NOT MODIFY !)
-CompilerVersion: 5060960::V5.06 update 7 (build 960)::ARMCC
-F (.\Blynk.c)(0x61A791CD)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\blynk.o --omf_browse .\objects\blynk.crf --depend .\objects\blynk.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (ST7735.h)(0x61312D48)
-I (PLL.h)(0x61312AAE)
-I (Timer2.h)(0x61312AAE)
-I (Timer3.h)(0x61312AAE)
-I (UART.h)(0x61312AAE)
-I (PortF.h)(0x61A79207)
-I (esp8266.h)(0x61312AAE)
-I (Bool.h)(0x614E2827)
-I (Graphics.h)(0x614E27D2)
-I (Timers.h)(0x614E2839)
-I (PWM.h)(0x61312AA7)
-I (Speaker.h)(0x614E2732)
-I (Unified_Port_Init.h)(0x61A674A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-F (.\Buttons.c)(0x617AF743)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\buttons.o --omf_browse .\objects\buttons.crf --depend .\objects\buttons.d)
-F (.\esp8266.c)(0x61A7912A)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\esp8266.o --omf_browse .\objects\esp8266.crf --depend .\objects\esp8266.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (UART.h)(0x61312AAE)
-I (ST7735.h)(0x61312D48)
-I (esp8266.h)(0x61312AAE)
-F (.\Graphics.c)(0x614E2794)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\graphics.o --omf_browse .\objects\graphics.crf --depend .\objects\graphics.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-I (ST7735.h)(0x61312D48)
-F (.\I2C0.c)(0x61312AA5)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\i2c0.o --omf_browse .\objects\i2c0.crf --depend .\objects\i2c0.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\ImageProcessor.c)(0x61A67F3E)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\imageprocessor.o --omf_browse .\objects\imageprocessor.crf --depend .\objects\imageprocessor.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (ST7735.h)(0x61312D48)
-I (Bool.h)(0x614E2827)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025DA4C)
-I (OV7670.h)(0x61A67321)
-F (.\OV7670.c)(0x61A790FF)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\ov7670.o --omf_browse .\objects\ov7670.crf --depend .\objects\ov7670.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-I (Bool.h)(0x614E2827)
-I (I2C0.h)(0x61312AA5)
-I (OV7670.h)(0x61A67321)
-I (OV7670RegisterAddresses.h)(0x61A65773)
-F (.\PLL.c)(0x61A791CD)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\pll.o --omf_browse .\objects\pll.crf --depend .\objects\pll.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (PLL.h)(0x61312AAE)
-I (tm4c123gh6pm.h)(0x61312AA9)
-F (.\PortF.c)(0x61A79122)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\portf.o --omf_browse .\objects\portf.crf --depend .\objects\portf.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (PortF.h)(0x61A79207)
-F (.\PWM.c)(0x61312AA7)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\Speaker.c)(0x614E273F)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\speaker.o --omf_browse .\objects\speaker.crf --depend .\objects\speaker.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-I (Bool.h)(0x614E2827)
-F (.\ST7735.c)(0x6147F265)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\st7735.o --omf_browse .\objects\st7735.crf --depend .\objects\st7735.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
-I (ST7735.h)(0x61312D48)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\StepperMotor.c)(0x61A792B7)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\steppermotor.o --omf_browse .\objects\steppermotor.crf --depend .\objects\steppermotor.d)
-I (SysTick.h)(0x61312AA8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (TExaS.h)(0x61312AA8)
-I (tm4c123gh6pm.h)(0x61312AA9)
-F (.\Timer2.c)(0x61312AAE)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\timer2.o --omf_browse .\objects\timer2.crf --depend .\objects\timer2.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\Timer3.c)(0x61312AAE)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\timer3.o --omf_browse .\objects\timer3.crf --depend .\objects\timer3.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\Timers.c)(0x61535136)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (Bool.h)(0x614E2827)
-I (Buttons.h)(0x617AFCC3)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-F (.\UART.c)(0x61312AAE)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
-I (UART.h)(0x61312AAE)
-F (.\UltimateMain.c)(0x61A7908F)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\ultimatemain.o --omf_browse .\objects\ultimatemain.crf --depend .\objects\ultimatemain.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (PLL.h)(0x61312AAE)
-I (ST7735.h)(0x61312D48)
-I (Bool.h)(0x614E2827)
-I (Buttons.h)(0x617AFCC3)
-I (Graphics.h)(0x614E27D2)
-I (Timers.h)(0x614E2839)
-I (PWM.h)(0x61312AA7)
-I (Speaker.h)(0x614E2732)
-I (ImageProcessor.h)(0x61A66F86)
-I (I2C0.h)(0x61312AA5)
-I (esp8266.h)(0x61312AAE)
-I (Timer2.h)(0x61312AAE)
-I (Timer3.h)(0x61312AAE)
-I (Unified_Port_Init.h)(0x61A674A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
-F (.\Unified_Port_Init.c)(0x61A790FF)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\objects\unified_port_init.o --omf_browse .\objects\unified_port_init.crf --depend .\objects\unified_port_init.d)
-I (tm4c123gh6pm.h)(0x61312AA9)
-I (Unified_Port_Init.h)(0x61A674A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-F (.\Bool.h)(0x614E2827)()
-F (.\Buttons.h)(0x617AFCC3)()
-F (.\esp8266.h)(0x61312AAE)()
-F (.\Graphics.h)(0x614E27D2)()
-F (.\I2C0.h)(0x61312AA5)()
-F (.\ImageProcessor.h)(0x61A66F86)()
-F (.\menus.h)(0x61819BDA)()
-F (.\OV7670.h)(0x61A67321)()
-F (.\OV7670RegisterAddresses.h)(0x61A65773)()
-F (.\PLL.h)(0x61312AAE)()
-F (.\PortF.h)(0x61A79207)()
-F (.\PWM.h)(0x61312AA7)()
-F (.\Speaker.h)(0x614E2732)()
-F (.\ST7735.h)(0x61312D48)()
-F (.\StepperMotor.h)(0x6196A84B)()
-F (.\Timer2.h)(0x61312AAE)()
-F (.\Timer3.h)(0x61312AAE)()
-F (.\Timers.h)(0x614E2839)()
-F (.\UART.h)(0x61312AAE)()
-F (.\Unified_Port_Init.h)(0x61A674A8)()
