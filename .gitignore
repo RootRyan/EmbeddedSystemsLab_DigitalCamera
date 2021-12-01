@@ -1,4 +1,5 @@
 **/Objects/*.crf
 **/Objects/*.o
 **/Objects/*.d
+**/Objects/UltimateMain.*
 **/Listings/*.map
