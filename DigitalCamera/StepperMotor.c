@@ -42,13 +42,13 @@ int Stepper_Check(void){
 // next
 		GPIO_PORTF_DATA_R ^= 0x02; //toggle the heartbeat LED
 
-		GPIO_PORTE_DATA_R = fsm[currentState].Out; //output to the motor
+		//GPIO_PORTE_DATA_R = fsm[currentState].Out; //output to the motor
 		//GPIO_PORTB_DATA_R = fsm[current].LED; //toggle the light when it is on
 
 		//SysTick_Wait10ms(FSM[current].delay); //delay for how ever long each state runs for
 
-		input_t = (GPIO_PORTD_DATA_R);		//take the inputs and shift them right
-		currentState = fsm[currentState].Next[input_t]; //use the new value as the index of the next state graph
+		//input_t = (GPIO_PORTD_DATA_R);		//take the inputs and shift them right
+		//currentState = fsm[currentState].Next[input_t]; //use the new value as the index of the next state graph
   }
 }
 

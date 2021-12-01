@@ -7,7 +7,7 @@
 // Last Modified: 9/24/21
 
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 #include "Bool.h"
 
 // This function enables and disables speaker output

@@ -27,7 +27,7 @@
 // SCL and SDA lines pulled to +3.3 V with 10 k resistors (part of breakout module)
 // ADD0 pin of TMP102 thermometer connected to GND
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
+#include "tm4c123gh6pm.h"
 
 
 #define I2C_MCS_ACK             0x00000008  // Data Acknowledge Enable

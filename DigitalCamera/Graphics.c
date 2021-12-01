@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "ST7735.h"
 
-extern uint32_t Hours_current,Mins_current,Secs_current;
+//extern uint32_t Hours_current,Mins_current,Secs_current;
 
 void Graphics_DrawCircle(int x0, int y0, int radius, int color)
 {

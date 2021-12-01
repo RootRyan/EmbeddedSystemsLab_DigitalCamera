@@ -10,7 +10,6 @@
 #include "ST7735.h"
 #include "Bool.h"
 #include <stdio.h>
-#include <stdbool.h>
 #include "OV7670.h"
 
 //vsync
