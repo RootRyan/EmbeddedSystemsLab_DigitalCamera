@@ -16,9 +16,9 @@ void CameraSetup(void);
 
 void StreamImage(void);
 
-bool takePicture(void);
+void CaptureImage(bool);
 
-bool timedPicture(uint32_t);
+void timedPicture(uint32_t,bool);
 
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))

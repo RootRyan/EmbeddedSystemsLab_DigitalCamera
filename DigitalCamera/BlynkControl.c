@@ -204,9 +204,11 @@ void Blynk_to_TM4C(void){int j; char data;
 					pinPrevActive[0] = true;
 					if (countdownEnabled) { //countdown
 						countdownIsActive = true;
+						timedPicture(countdownSelected,flashEnabled);
 						//take picture w count and flash setting
 					} else { //no countdown
 						//take picture w flash setting
+						CaptureImage(flashEnabled);
 					}
 				} else if (pin_int == 0) {
 					pinPrevActive[5] = false;

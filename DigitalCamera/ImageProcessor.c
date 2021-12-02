@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "OV7670.h"
 #include "Bitmap.h"
+#include "Timer4A.h"
 
 //vsync
 #define PB1       (*((volatile uint32_t *)0x40005008))
@@ -33,18 +34,18 @@
 #define PB7       (*((volatile uint32_t *)0x40005200))
 
 void (*bufferFullFunctionPtr)(uint8_t *);
-void (*readImageStartFunctionPtr)(void);
-void (*readImageStopFunctionPtr)(void);
 uint16_t bufferPos = 0;
 static const uint16_t BUFFER_SIZE = 480;
 uint8_t buffer[BUFFER_SIZE];
 uint32_t countdownTime = 0;
+extern uint32_t screenIdentifier;
+extern bool countdownIsActive;
+extern bool flashEnabled;
 
 void CameraSetup(){
 	
 	bufferPos = 0;
 	bufferFullFunctionPtr = 0;
-	readImageStartFunctionPtr = 0;
 	//readImageStopFunctionPtr = 0; --> Set to display image on screen
 	bool work = !CameraInit();
 	if (work) {
@@ -74,6 +75,44 @@ void StreamImage() {
 			b = ((PB4<<4)|(PD7<<3)|(PD6<<2)|(PD5<<1)|(PD4)) & 0x1F;
 			while(!(PB1&1)){};//wait for high
 
+  		buffer[bufferPos] = r;
+  		buffer[bufferPos + 1] = g;
+  		buffer[bufferPos + 2] = b;
+  		bufferPos += 3;
+  		if (bufferPos >= BUFFER_SIZE) {
+  			bufferPos = 0;
+  		}
+  	}
+  }
+	ST7735_DrawBitmap(buildFromBuffer(buffer).x, buildFromBuffer(buffer).y, buildFromBuffer(buffer).image, buildFromBuffer(buffer).w, buildFromBuffer(buffer).h);
+  //call to display on screen
+	
+	
+}
+
+void CaptureImage(bool flashEnabled) {
+	if(flashEnabled){
+		
+	}
+  bufferPos = 0;
+
+  uint8_t r=0, g=0, b=0;
+	//Wait for vsync
+	while(!(PB1&1)){};//wait for high
+  // read image
+  for (int y = 0; y < 120; y++) {
+  	for (int x = 0; x < 160; x++) {
+			//startBmpBuild();
+			while((PB1&1)){};//wait for low
+			r = ((PB7<<4)|(PB6<<3)|(PB5<<2)|(PB4<<1)|(PD7)) & 0x1F;
+			g = ((PD6<<4)|(PD5<<3)|(PD4<<2)) & 0x1F;
+			while(!(PB1&1)){};//wait for high
+			while((PB1&1)){};//wait for low
+  	  g = (g|(PB7<<2)|(PB6<<1)|(PB5)) & 0x1F;
+			b = ((PB4<<4)|(PD7<<3)|(PD6<<2)|(PD5<<1)|(PD4)) & 0x1F;
+			while(!(PB1&1)){};//wait for high
+			//addToBmpBuild(r,g,b);
+
 
   		buffer[bufferPos] = r;
   		buffer[bufferPos + 1] = g;
@@ -84,15 +123,22 @@ void StreamImage() {
   		}
   	}
   }
-
-  //call to display on screen
-
 }
 
-bool timedPicture(uint32_t seconds){
-	
-	
-	return false;
+void countToImageCapture(void){
+	countdownTime--;
+	if(countdownTime == 0){
+		CaptureImage(flashEnabled);
+		//Save to sdc function
+		countdownIsActive = false;
+		Timer4A_Stop();
+	}
+}
+
+void timedPicture(uint32_t seconds){
+	countdownTime = seconds;
+	Timer4A_Init(&countToImageCapture, (80000000*seconds), 4);
+	countdownIsActive = true;
 	//called from the button/blynk/its relevant file in order to specify that a frame/image capture should be taken with a countdown delay
 	//requires initializing a system timer that is responsible for said countdowns
 	//might be better implemented in another file since the timed picture may require interfacing the ST7735, speaker, and flash led

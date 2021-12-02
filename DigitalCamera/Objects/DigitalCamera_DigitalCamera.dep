@@ -1,7 +1,7 @@
 Dependencies for Project 'DigitalCamera', Target 'DigitalCamera': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::ARMCC
 F (.\startup.s)(0x61312A80)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 535" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup.lst --xref -o .\objects\startup.o --depend .\objects\startup.d)
-F (.\UltimateMain.c)(0x61A8E435)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\ultimatemain.o --omf_browse .\objects\ultimatemain.crf --depend .\objects\ultimatemain.d)
+F (.\UltimateMain.c)(0x61A90376)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\ultimatemain.o --omf_browse .\objects\ultimatemain.crf --depend .\objects\ultimatemain.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
@@ -9,7 +9,8 @@ I (tm4c123gh6pm.h)(0x61312AA9)
 I (PLL.h)(0x61312AAE)
 I (ST7735.h)(0x61312D48)
 I (Bool.h)(0x614E2827)
-I (ImageProcessor.h)(0x61A8DA94)
+I (ButtonFunctions.h)(0x61A9063F)
+I (ImageProcessor.h)(0x61A9060B)
 I (I2C0.h)(0x61312AA5)
 I (esp8266.h)(0x61312AAE)
 I (Timer2.h)(0x61312AAE)
@@ -31,13 +32,14 @@ I (esp8266.h)(0x61312AAE)
 F (.\I2C0.c)(0x61A7AE62)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\i2c0.o --omf_browse .\objects\i2c0.crf --depend .\objects\i2c0.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (tm4c123gh6pm.h)(0x61312AA9)
-F (.\ImageProcessor.c)(0x61A8DB62)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\imageprocessor.o --omf_browse .\objects\imageprocessor.crf --depend .\objects\imageprocessor.d)
+F (.\ImageProcessor.c)(0x61A9093D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\imageprocessor.o --omf_browse .\objects\imageprocessor.crf --depend .\objects\imageprocessor.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (ST7735.h)(0x61312D48)
 I (Bool.h)(0x614E2827)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
 I (OV7670.h)(0x61A67321)
-I (Bitmap.h)(0x61A8DAC2)
+I (Bitmap.h)(0x61A90376)
+I (Timer4A.h)(0x61312AA9)
 F (.\OV7670.c)(0x61A8DA94)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\ov7670.o --omf_browse .\objects\ov7670.crf --depend .\objects\ov7670.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (tm4c123gh6pm.h)(0x61312AA9)
@@ -77,7 +79,7 @@ F (.\PLL.c)(0x61A791CD)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --sp
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (PLL.h)(0x61312AAE)
 I (tm4c123gh6pm.h)(0x61312AA9)
-F (.\BlynkControl.c)(0x61A8E3E7)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\blynkcontrol.o --omf_browse .\objects\blynkcontrol.crf --depend .\objects\blynkcontrol.d)
+F (.\BlynkControl.c)(0x61A9060A)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\blynkcontrol.o --omf_browse .\objects\blynkcontrol.crf --depend .\objects\blynkcontrol.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
@@ -87,20 +89,31 @@ I (esp8266.h)(0x61312AAE)
 I (Timer2.h)(0x61312AAE)
 I (Timer3.h)(0x61312AAE)
 I (UART.h)(0x61312AAE)
-I (ImageProcessor.h)(0x61A8DA94)
+I (ImageProcessor.h)(0x61A9060B)
 F (.\Camera_Port_Init.c)(0x61A8DAB4)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\camera_port_init.o --omf_browse .\objects\camera_port_init.crf --depend .\objects\camera_port_init.d)
 I (tm4c123gh6pm.h)(0x61312AA9)
 I (Camera_Port_Init.h)(0x61A8CC7A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-F (.\Bitmap.c)(0x61A8DAC2)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\bitmap.o --omf_browse .\objects\bitmap.crf --depend .\objects\bitmap.d)
-I (bitmap.h)(0x61A8DAC2)
+F (.\Bitmap.c)(0x61A90392)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\bitmap.o --omf_browse .\objects\bitmap.crf --depend .\objects\bitmap.d)
+I (bitmap.h)(0x61A90376)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025DA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025DA44)
-F (.\Bitmap.h)(0x61A8DAC2)()
-F (.\Timer4A.c)(0x61312AA9)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\timer4a.o --omf_browse .\objects\timer4a.crf --depend .\objects\timer4a.d)
+F (.\Bitmap.h)(0x61A90376)()
+F (.\Timer4A.c)(0x61A90376)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\timer4a.o --omf_browse .\objects\timer4a.crf --depend .\objects\timer4a.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (../inc/tm4c123gh6pm.h)(0x61312AA9)
+I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
 F (.\Timer5A.c)(0x61312AA9)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\timer5a.o --omf_browse .\objects\timer5a.crf --depend .\objects\timer5a.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
-I (../inc/tm4c123gh6pm.h)(0x61312AA9)
+I (..\../inc/tm4c123gh6pm.h)(0x61312AA9)
+F (.\ButtonFunctions.c)(0x61A908F1)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\buttonfunctions.o --omf_browse .\objects\buttonfunctions.crf --depend .\objects\buttonfunctions.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
+I (ST7735.h)(0x61312D48)
+I (Bool.h)(0x614E2827)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
+I (OV7670.h)(0x61A67321)
+I (Bitmap.h)(0x61A90376)
+I (Timer4A.h)(0x61312AA9)
+I (ImageProcessor.h)(0x61A9060B)
+I (tm4c123gh6pm.h)(0x61312AA9)
+F (.\ButtonFunctions.h)(0x61A9063F)()

@@ -33,5 +33,19 @@ typedef struct {
     bitmapinfoheader bitmapinfoheader;
 } bitmap_header_t;
 
+typedef struct {
+	int16_t x;
+	int16_t y;
+	const uint16_t *image;
+	int16_t w;
+	int16_t h;
+} reducedBitmap;
+
+reducedBitmap buildFromBuffer(uint8_t *buffer);
+
+void startBmpBuild(void);
+void addToBmpBuild(uint8_t,uint8_t,uint8_t);
+const uint16_t *getBmpBuildImageArray(void);
+
 bitmap_header_t *bmp_create_header(int w, int h);
 #endif

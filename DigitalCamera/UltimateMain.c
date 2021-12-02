@@ -7,7 +7,7 @@
 #include "PLL.h"
 #include "ST7735.h"
 #include "Bool.h"
-//#include "Buttons.h"
+#include "ButtonFunctions.h"
 //#include "Graphics.h"
 //#include "Timers.h"
 //#include "PWM.h"
@@ -36,6 +36,7 @@ void WaitForInterrupt(void);  // low power mode
 bool motorOn = false;
 int NextSt = 0;
 int capturePic = false;
+uint32_t screenIdentifier = 0;
 
 int main(void){
 	DisableInterrupts();
@@ -54,8 +55,7 @@ int main(void){
 			__nop();
 	}
 
-	//Buttons_Init();
-
+	Buttons_Init();
 	
 	EnableInterrupts();
 	while(1){
