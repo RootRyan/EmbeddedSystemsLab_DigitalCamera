@@ -11,9 +11,14 @@
 #include "Bool.h"
 #include <stdio.h>
 #include "OV7670.h"
+#include "Bitmap.h"
 
 //vsync
 #define PB1       (*((volatile uint32_t *)0x40005008))
+	
+//pixel clock -- pe3
+//camera system clock -- pe2
+//reset -- pa1
 
 //pixel data bits 0-3
 #define PD4       (*((volatile uint32_t *)0x40007040))
@@ -33,20 +38,28 @@ void (*readImageStopFunctionPtr)(void);
 uint16_t bufferPos = 0;
 static const uint16_t BUFFER_SIZE = 480;
 uint8_t buffer[BUFFER_SIZE];
+uint32_t countdownTime = 0;
 
 void CameraSetup(){
+	
 	bufferPos = 0;
 	bufferFullFunctionPtr = 0;
 	readImageStartFunctionPtr = 0;
 	//readImageStopFunctionPtr = 0; --> Set to display image on screen
-	CameraInit();
+	bool work = !CameraInit();
+	if (work) {
+    // flash green screen if camera setup was successful
+    ST7735_FillScreen(ST7735_GREEN);
+  } else {
+    // red screen if failed to connect to camera
+    ST7735_FillScreen(ST7735_RED);
+  }
 }
 
 void StreamImage() {
   bufferPos = 0;
 
   uint8_t r=0, g=0, b=0;
-  uint16_t index = 0;
 	//Wait for vsync
 	while(!(PB1&1)){};//wait for high
   // read image
@@ -60,8 +73,6 @@ void StreamImage() {
   	  g = (g|(PB7<<2)|(PB6<<1)|(PB5)) & 0x1F;
 			b = ((PB4<<4)|(PD7<<3)|(PD6<<2)|(PD5<<1)|(PD4)) & 0x1F;
 			while(!(PB1&1)){};//wait for high
-
-      index++;
 
 
   		buffer[bufferPos] = r;
@@ -79,6 +90,8 @@ void StreamImage() {
 }
 
 bool timedPicture(uint32_t seconds){
+	
+	
 	return false;
 	//called from the button/blynk/its relevant file in order to specify that a frame/image capture should be taken with a countdown delay
 	//requires initializing a system timer that is responsible for said countdowns

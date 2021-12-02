@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // File name:     esp8266.c
 // Description:   This starter code is used to bridge the TM4C123 board
-//                and the Blynk Application via the ESP8266.
+//                and the Blynk Application via the ESP8266. 
 //
 // Authors:       Mark McDermott
 // Converted to EE445L style Jonathan Valvano
@@ -15,9 +15,9 @@
 // PE2 nc
 // PE1 output    Pin 7 Reset
 // PE0 input     Pin 3 Rdy IO2
-//               Pin 2 IO0, 10k pullup to 3.3V
-//               Pin 8 Vcc, 3.3V (separate supply from LaunchPad)
-// Gnd           Pin 4 Gnd
+//               Pin 2 IO0, 10k pullup to 3.3V  
+//               Pin 8 Vcc, 3.3V (separate supply from LaunchPad) 
+// Gnd           Pin 4 Gnd  
 // Place a 4.7uF tantalum and 0.1 ceramic next to ESP8266 3.3V power pin
 // Use LM2937-3.3 and two 4.7 uF capacitors to convert USB +5V to 3.3V for the ESP8266
 // http://www.ti.com/lit/ds/symlink/lm2937-3.3.pdf
@@ -28,12 +28,10 @@
 #include "ST7735.h"
 #include "esp8266.h"
 // the following two lines connect you to the internet
-//char    ssid[32]        = "EE-IOT-Platform-03";
-//char    pass[32]        = "dUQQE?&W44x7";
-char    ssid[32]        = "AndroidAPC371";
-char    pass[32]        = "xafd2904";
+char    ssid[32]        = "EE-IOT-Platform-03";
+char    pass[32]        = "dUQQE?&W44x7";
 // create your own Blynk server app and edit this next line with your authentication code
-char    auth[64]        = "vNcDbRnDfl1JbvHK6DD_xhebymLp-2KZ";
+char    auth[64]        = "1234567890";
 
 #define UART_FR_RXFF            0x00000040  // UART Receive FIFO Full
 #define UART_FR_TXFF            0x00000020  // UART Transmit FIFO Full
@@ -129,7 +127,7 @@ int ESP8266_GetMessage(char *datapt){char data; int j;
 // 0 to RX5FIFOSIZE-1
 uint32_t Rx5Fifo_Size(void){
  return ((uint32_t)(Rx5PutI-Rx5GetI));
-}
+}  
 
 // Two-index implementation of the transmit FIFO
 // can hold 0 to TX5FIFOSIZE elements
@@ -180,13 +178,13 @@ unsigned long Tx5Fifo_Size(void){
 void UART5_Init(uint32_t priority){
   if(priority>7){
     priority = 7;
-  }
+  } 
   SYSCTL_RCGCUART_R |= 0x20; // activate UART5
   SYSCTL_RCGCGPIO_R |= 0x10; // activate port E
   Rx5Fifo_Init();                       // initialize empty FIFOs
   Tx5Fifo_Init();
   UART5_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
-
+         
   UART5_IBRD_R = 520;                   // IBRD = int(80,000,000 / (16 * 9600)) = int(520.833)
   UART5_FBRD_R = 53;                    // FBRD = round(0.833 * 64) = 53
                                         // 8 bit word length (no parity bits, one stop bit, FIFOs)
@@ -311,7 +309,7 @@ void DelayMs(uint32_t n){
 #define PE0       (*((volatile uint32_t *)0x40024004))    // RDY from ESP 8266
 #define PE1       (*((volatile uint32_t *)0x40024008))    // RST_B to ESP8266
 #define PE3       (*((volatile uint32_t *)0x40024020))    // LED to indicate that the 8266 connected
-
+  
 #define RDY   PE0
 #define RDY1  0x01
 #define RST   PE1
@@ -321,7 +319,7 @@ void DelayMs(uint32_t n){
 #define BIT0  0x01
 #define BIT1  0x02
 #define BIT2  0x04
-#define BIT3  0x08
+#define BIT3  0x08   
 
 // Initialize PE5,4,3,1,0 for interface to ESP8266
 // Uses interrupt driven UART5 on PE5,4
@@ -335,7 +333,7 @@ void ESP8266_Init(void){
   GPIO_PORTE_DEN_R |= 0x0B;       // enable digital I/O on PE3,1,0
   GPIO_PORTE_PCTL_R = (GPIO_PORTE_PCTL_R&0xFFFF0F00);
   GPIO_PORTE_AMSEL_R &= ~0x0B;    // disable analog functionality on PE3,1,0
-  UART5_Init(2);                  // Enable ESP8266 Serial Port
+  UART5_Init(2);                  // Enable ESP8266 Serial Port 
   EnableInterrupts();
 }
 // Initialize ESP8266 interface and reset the
@@ -355,23 +353,23 @@ void ESP8266_Reset(void) {
 #ifdef DEBUG1
   UART_OutString("Leaving Reset_8266 routine\r\n");
 #endif
-  PE3 = LOW;             // Turn off
+  PE3 = LOW;             // Turn off 
 }
 
 // ----------------------------------------------------------------------
 // This routine sets up the Wifi connection between the TM4C and the
 // hotspot. Enable the DEBUG flags in esp8266.h if you want to watch the transactions.
-void ESP8266_SetupWiFi(void) {
+void ESP8266_SetupWiFi(void) { 
 #ifdef DEBUG1
   UART_OutString("\r\nIn WiFI_Setup routine\r\n");
   UART_OutString("Waiting for RDY flag from ESP\r\n");
 #endif
-
+  
 #ifdef DEBUG3
   Output_Color(ST7735_YELLOW);
   ST7735_OutString("In WiFI_Setup routine\n");
   ST7735_OutString("Waiting for RDY flag\n");
-#endif
+#endif 
   while (!RDY) {      // Wait for ESP8266 indicate it is ready for programming data
 #ifdef DEBUG1
     UART_OutString(".");
@@ -382,17 +380,17 @@ void ESP8266_SetupWiFi(void) {
   ESP8266_OutChar(',');
   ESP8266_OutString(ssid);
   ESP8266_OutChar(',');
-  ESP8266_OutString(pass);
+  ESP8266_OutString(pass); 
   ESP8266_OutChar(',');       // Extra comma needed for 8266 parser code
-  ESP8266_OutChar('\n');      // Send NL to indicate EOT
+  ESP8266_OutChar('\n');      // Send NL to indicate EOT   
 
 #ifdef DEBUG1
-  UART_OutString(auth);
+  UART_OutString(auth);    
   UART_OutChar(',');
   UART_OutString(ssid);
   UART_OutChar(',');
   UART_OutString(pass);
-  UART_OutString(",\n\r");
+  UART_OutString(",\n\r");            
 #endif
 #ifdef DEBUG3
   Output_Color(ST7735_WHITE);
@@ -402,13 +400,13 @@ void ESP8266_SetupWiFi(void) {
 #endif
 
   //
-  // This while loop receives debug info from the 8266 and optionally
+  // This while loop receives debug info from the 8266 and optionally 
   // sends it out the debug port. The loop exits once the RDY signal
   // is deasserted and the serial port has no more character to xmit
-  //
+  // 
 #ifdef DEBUG1
   UART_OutString("\n\rWaiting for RDY to go low\n\r");
-#endif
+#endif 
   while(RDY){   // pause while RDY=1
 #ifdef DEBUG1
     UART_OutString(".");
@@ -419,15 +417,17 @@ void ESP8266_SetupWiFi(void) {
   }
 #ifdef DEBUG1
   UART_OutString("\n\rRDY went low\n\r");
-#endif
+#endif 
   Rx5Fifo_Init(); // flush buffer
 
 #ifdef DEBUG3
   Output_Color(ST7735_YELLOW);
   ST7735_OutString("Exiting WiFI_Setup\nReady to talk\n");
-#endif
+#endif     
 #ifdef DEBUG1
   UART_OutString("Exiting TM4C WiFI_Setup routine\r\nReady to talk\r\n");
 #endif
   PE3 = BIT3;
 }
+
+

@@ -63,9 +63,21 @@ bool CameraInit(){
 	bool failure = false;
 	//Make sure IO is initialized before anything below is called
 	//Potential added delay
+	for (int delay = 0; delay <= 100000; delay++){
+			__nop();
+	}
 	failure |= WriteDefaults();
+	for (int delay = 0; delay <= 100000; delay++){
+			__nop();
+	}
 	failure |= SetRGB565();
+	for (int delay = 0; delay <= 100000; delay++){
+			__nop();
+	}
 	failure |= SetQQVGA();
+	for (int delay = 0; delay <= 100000; delay++){
+			__nop();
+	}
 	
 	SetDisablePixelClockDuringBlankLines();
   SetDisableHREFDuringBlankLines();
@@ -76,7 +88,11 @@ bool CameraInit(){
 }
 
 bool ResetOV7670Registers(){
-	return I2C_Send1(REG_COM7, REG_COM7 | 0x80);
+	bool result = I2C_Send1(REG_COM7, REG_COM7 | 0x80);
+	for (int delay = 0; delay <= 10000000; delay++){
+			__nop();
+	}
+	return result;
 }
 
 bool WriteDefaults(){

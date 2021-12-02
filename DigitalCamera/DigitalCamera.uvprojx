@@ -454,9 +454,34 @@
               <FilePath>.\PLL.c</FilePath>
             </File>
             <File>
-              <FileName>Unified_Port_Init.c</FileName>
+              <FileName>BlynkControl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Unified_Port_Init.c</FilePath>
+              <FilePath>.\BlynkControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>Camera_Port_Init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Camera_Port_Init.c</FilePath>
+            </File>
+            <File>
+              <FileName>Bitmap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bitmap.c</FilePath>
+            </File>
+            <File>
+              <FileName>Bitmap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bitmap.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer4A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Timer4A.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer5A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Timer5A.c</FilePath>
             </File>
           </Files>
         </Group>

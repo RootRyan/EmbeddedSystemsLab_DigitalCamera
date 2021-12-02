@@ -1,4 +1,4 @@
-// StepperMotorController.h
+/// StepperMotorController.h
 // Runs on TM4C123
 // Finite state machine to operate a stepper motor.
 // Pranesh Satish, Jacob Dach, Ryan Root, Jeppe Lynge
@@ -12,7 +12,6 @@
 //  PB6 is LED output (1 activates external LED on protoboard)
 
 #include "SysTick.h"
-#include "TExaS.h"
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 
@@ -22,10 +21,10 @@
 struct state{
   uint8_t Out;
   uint32_t Delay;
-  const struct State *Next[4];
+  const struct state *Next[4];
 };
 
-typedef const struct State State_t;
+typedef const struct state State_t;
 
 #define S0  &fsm[0]
 #define S1  &fsm[1]
@@ -34,7 +33,7 @@ typedef const struct State State_t;
 #define S8  &fsm[4]
 #define S16 &fsm[5]
 
-State_t fsm[5]={
+State_t fsm[6]={
 	{0, T10msec, S0, S1, S16, S0},
 	{1, T10msec, S1, S2, S0, S1},
   {2, T10msec, S2, S4, S1, S2},
