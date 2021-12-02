@@ -32,7 +32,7 @@ I (esp8266.h)(0x61312AAE)
 F (.\I2C0.c)(0x61A7AE62)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\i2c0.o --omf_browse .\objects\i2c0.crf --depend .\objects\i2c0.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (tm4c123gh6pm.h)(0x61312AA9)
-F (.\ImageProcessor.c)(0x61A9093D)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\imageprocessor.o --omf_browse .\objects\imageprocessor.crf --depend .\objects\imageprocessor.d)
+F (.\ImageProcessor.c)(0x61A911BD)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\imageprocessor.o --omf_browse .\objects\imageprocessor.crf --depend .\objects\imageprocessor.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (ST7735.h)(0x61312D48)
 I (Bool.h)(0x614E2827)
@@ -40,6 +40,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025DA44)
 I (OV7670.h)(0x61A67321)
 I (Bitmap.h)(0x61A90376)
 I (Timer4A.h)(0x61312AA9)
+I (Timer5A.h)(0x61312AA9)
 F (.\OV7670.c)(0x61A8DA94)(-c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --c99-I.\RTE\_DigitalCamera-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="535" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\objects\ov7670.o --omf_browse .\objects\ov7670.crf --depend .\objects\ov7670.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025DA4E)
 I (tm4c123gh6pm.h)(0x61312AA9)

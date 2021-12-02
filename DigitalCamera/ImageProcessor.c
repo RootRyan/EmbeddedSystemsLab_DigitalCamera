@@ -13,6 +13,7 @@
 #include "OV7670.h"
 #include "Bitmap.h"
 #include "Timer4A.h"
+#include "Timer5A.h"
 
 //vsync
 #define PB1       (*((volatile uint32_t *)0x40005008))
@@ -42,6 +43,8 @@ extern uint32_t screenIdentifier;
 extern bool countdownIsActive;
 extern bool flashEnabled;
 
+void bufferToView(void);
+
 void CameraSetup(){
 	
 	bufferPos = 0;
@@ -55,9 +58,23 @@ void CameraSetup(){
     // red screen if failed to connect to camera
     ST7735_FillScreen(ST7735_RED);
   }
+	Timer5A_Init(&bufferToView,4000000,2);
 }
 
-void StreamImage() {
+uint16_t xCoord=0;
+uint16_t yCoord=2;
+
+void bufferToView(){
+	if (bufferPos < 2)
+		bufferPos = BUFFER_SIZE-1;
+	uint16_t pixelColor = (buffer[bufferPos + 2] & 0x1F) | ((buffer[bufferPos + 1] & 0x3F) << 5) | ((buffer[bufferPos + 2] & 0x1F) << 11);
+	ST7735_DrawPixel(xCoord,yCoord, pixelColor);
+  bufferPos -= 3;
+	yCoord = yCoord + (xCoord + 1 / 160);
+	xCoord = (xCoord + 1 % 160);
+}
+
+void StreamImage(){
   bufferPos = 0;
 
   uint8_t r=0, g=0, b=0;
@@ -68,10 +85,10 @@ void StreamImage() {
   	for (int x = 0; x < 160; x++) {
 			while((PB1&1)){};//wait for low
 			r = ((PB7<<4)|(PB6<<3)|(PB5<<2)|(PB4<<1)|(PD7)) & 0x1F;
-			g = ((PD6<<4)|(PD5<<3)|(PD4<<2)) & 0x1F;
+			g = ((PD6<<4)|(PD5<<3)|(PD4<<2)) & 0x3F;
 			while(!(PB1&1)){};//wait for high
 			while((PB1&1)){};//wait for low
-  	  g = (g|(PB7<<2)|(PB6<<1)|(PB5)) & 0x1F;
+  	  g = (g|(PB7<<2)|(PB6<<1)|(PB5)) & 0x3F;
 			b = ((PB4<<4)|(PD7<<3)|(PD6<<2)|(PD5<<1)|(PD4)) & 0x1F;
 			while(!(PB1&1)){};//wait for high
 
@@ -84,7 +101,7 @@ void StreamImage() {
   		}
   	}
   }
-	ST7735_DrawBitmap(buildFromBuffer(buffer).x, buildFromBuffer(buffer).y, buildFromBuffer(buffer).image, buildFromBuffer(buffer).w, buildFromBuffer(buffer).h);
+	//ST7735_DrawBitmap(buildFromBuffer(buffer).x, buildFromBuffer(buffer).y, buildFromBuffer(buffer).image, buildFromBuffer(buffer).w, buildFromBuffer(buffer).h);
   //call to display on screen
 	
 	
