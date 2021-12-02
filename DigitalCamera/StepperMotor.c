@@ -14,7 +14,7 @@ void SendDataToLogicAnalyzer(void){
   UART0_DR_R = 0x80|(PA4<<2)|PE50;
 }
 
-int Stepper_Check(void){
+int Stepper_Check(void){ //Test main, unused in final product
   //TExaS_Init(&SendDataToLogicAnalyzer);    // activate logic analyzer and set system clock to 80 MHz
   SysTick_Init();
 // you initialize your system here
@@ -54,18 +54,12 @@ int Stepper_Check(void){
 
 
 void StepperMotor_Init() {
-  SYSCTL_RCGCGPIO_R |= 0x3A; //initialize each port used
+  SYSCTL_RCGCGPIO_R |= 0x09; //initialize Ports A and D for motor and flash LED
 	delay++;
 
-	GPIO_PORTE_DIR_R |= 0x1F;
-	GPIO_PORTE_DEN_R |= 0x1F;
+	GPIO_PORTD_DIR_R |= 0x1F;
+	GPIO_PORTD_DEN_R |= 0x1F; //Motor output initialize
 
-	GPIO_PORTD_DIR_R &= 0xFC;
-	GPIO_PORTD_DEN_R |= 0x03;
-
-	GPIO_PORTB_DIR_R |= 0x40;
-	GPIO_PORTB_DEN_R |= 0x40;
-
-	GPIO_PORTF_DIR_R |= 0x02;
-	GPIO_PORTF_DEN_R |= 0x02;
+	GPIO_PORTA_DIR_R |= 0x01;
+	GPIO_PORTA_DEN_R |= 0x01; //Flash LED output Initialize
 }

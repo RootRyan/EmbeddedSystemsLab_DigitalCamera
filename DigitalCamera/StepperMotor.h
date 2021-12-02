@@ -18,7 +18,7 @@
 
 	uint8_t currentState;
 	uint8_t input_t;
-#define T100msec 10
+#define T10msec 1
 struct state{
   uint8_t Out;
   uint32_t Delay;
@@ -27,18 +27,20 @@ struct state{
 
 typedef const struct State State_t;
 
-#define S1  &fsm[0]
-#define S2  &fsm[1]
-#define S4  &fsm[2]
-#define S8  &fsm[3]
-#define S16 &fsm[4]
+#define S0  &fsm[0]
+#define S1  &fsm[1]
+#define S2  &fsm[2]
+#define S4  &fsm[3]
+#define S8  &fsm[4]
+#define S16 &fsm[5]
 
 State_t fsm[5]={
-  {1, T100msec, S1, S2, S16, S1},
-  {2, T100msec, S2, S4, S1, S2},
-  {4, T100msec, S4, S8, S2, S4},
-  {8, T100msec, S8, S16, S4, S8},
-  {16,T100msec, S16, S1, S8, S16}
+	{0, T10msec, S0, S1, S16, S0},
+	{1, T10msec, S1, S2, S0, S1},
+  {2, T10msec, S2, S4, S1, S2},
+  {4, T10msec, S4, S8, S2, S4},
+  {8, T10msec, S8, S16, S4, S8},
+  {16,T10msec, S16, S0, S8, S16}
 };
 
 
