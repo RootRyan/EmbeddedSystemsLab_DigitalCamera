@@ -14,6 +14,12 @@
 #include "Bitmap.h"
 #include "Timer4A.h"
 #include "Timer5A.h"
+#include "PWM.h"
+#include "I2C0.h"
+#include "OV7670RegisterAddresses.h"
+
+//flash
+#define PA0       (*((volatile unsigned long *)0x40004004))
 
 //vsync
 #define PB1       (*((volatile uint32_t *)0x40005008))
@@ -50,7 +56,10 @@ void CameraSetup(){
 	bufferPos = 0;
 	bufferFullFunctionPtr = 0;
 	//readImageStopFunctionPtr = 0; --> Set to display image on screen
-	bool work = !CameraInit();
+	//bool work = !CameraInit();
+	ST7735_FillScreen(I2C_Recv(0x2B));
+	I2C_Send1(0x2A,REG_COM7);
+	bool work = false;
 	if (work) {
     // flash green screen if camera setup was successful
     ST7735_FillScreen(ST7735_GREEN);
@@ -58,15 +67,14 @@ void CameraSetup(){
     // red screen if failed to connect to camera
     ST7735_FillScreen(ST7735_RED);
   }
-	Timer5A_Init(&bufferToView,4000000,2);
+	Timer5A_Init(&bufferToView,40000,2);
 }
 
 uint16_t xCoord=0;
 uint16_t yCoord=2;
 
 void bufferToView(){
-	if (bufferPos < 2)
-		bufferPos = BUFFER_SIZE-1;
+	while(bufferPos<3){};
 	uint16_t pixelColor = (buffer[bufferPos + 2] & 0x1F) | ((buffer[bufferPos + 1] & 0x3F) << 5) | ((buffer[bufferPos + 2] & 0x1F) << 11);
 	ST7735_DrawPixel(xCoord,yCoord, pixelColor);
   bufferPos -= 3;
@@ -96,9 +104,7 @@ void StreamImage(){
   		buffer[bufferPos + 1] = g;
   		buffer[bufferPos + 2] = b;
   		bufferPos += 3;
-  		if (bufferPos >= BUFFER_SIZE) {
-  			bufferPos = 0;
-  		}
+  		while (bufferPos >= BUFFER_SIZE) {};
   	}
   }
 	//ST7735_DrawBitmap(buildFromBuffer(buffer).x, buildFromBuffer(buffer).y, buildFromBuffer(buffer).image, buildFromBuffer(buffer).w, buildFromBuffer(buffer).h);
@@ -109,7 +115,7 @@ void StreamImage(){
 
 void CaptureImage(bool flashEnabled) {
 	if(flashEnabled){
-		
+		PA0=1;
 	}
   bufferPos = 0;
 

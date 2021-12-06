@@ -10,7 +10,7 @@
 #include "ButtonFunctions.h"
 //#include "Graphics.h"
 //#include "Timers.h"
-//#include "PWM.h"
+#include "PWM.h"
 //#include "Speaker.h"
 #include "ImageProcessor.h"
 #include "I2C0.h"
@@ -26,6 +26,8 @@
 
 #define PF2             (*((volatile uint32_t *)0x40025010))
 #define PF1             (*((volatile uint32_t *)0x40025008))
+#define PA0       (*((volatile unsigned long *)0x40004004))
+
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
@@ -40,22 +42,20 @@ uint32_t screenIdentifier = 0;
 
 int main(void){
 	DisableInterrupts();
-	PLL_Init(Bus16MHz);
+	PLL_Init(Bus80MHz);
 	Camera_Port_Init();
 	ST7735_InitR(INITR_REDTAB);
-	ST7735_SetRotation(1);
+  ST7735_SetRotation(1);
 	StepperMotor_Init();
-	
-	I2C_Init();
-	for (int delay = 0; delay <= 100000; delay++){
-			__nop();
-	}
-	CameraSetup();
-	for (int delay = 0; delay <= 100000; delay++){
-			__nop();
-	}
+	PWM_Init(3,2);
+	ST7735_FillScreen(ST7735_RED);
+	//I2C_Init();
 
-	Buttons_Init();
+	ST7735_FillScreen(ST7735_YELLOW);
+	//CameraSetup();
+
+	ST7735_FillScreen(ST7735_GREEN);
+	//Buttons_Init();
 	
 	EnableInterrupts();
 	while(1){
@@ -65,7 +65,8 @@ int main(void){
 			GPIO_PORTD_DATA_R = fsm[currentState].Out; //output to the motor
 			
 			SysTick_Wait10ms(fsm[currentState].Delay); //delay for how ever long each state runs for
-			
+			if(PA0 == 1)
+				PA0 = 0;
 			input_t = NextSt;		//take the inputs from the Blynk App
 		}
 	}

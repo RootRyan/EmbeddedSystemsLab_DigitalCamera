@@ -33,10 +33,10 @@
 
 // PORT-C Lab Board switches
 //
-#define PC0       (*((volatile uint32_t *)0x40006004))    
+/*#define PC0       (*((volatile uint32_t *)0x40006004))    
 #define PC1       (*((volatile uint32_t *)0x40006008))    
 #define PC2       (*((volatile uint32_t *)0x40006010))    
-#define PC3       (*((volatile uint32_t *)0x40006020))   
+#define PC3       (*((volatile uint32_t *)0x40006020))  */ 
 #define PC4       (*((volatile uint32_t *)0x40006040))    // UP    and Logic Analyzer JP2-15
 #define PC5       (*((volatile uint32_t *)0x40006080))    // RIGHT and Logic Analyzer JP2-13
 #define PC6       (*((volatile uint32_t *)0x40006100))    // LEFT  and Logic Analyzer JP2-11

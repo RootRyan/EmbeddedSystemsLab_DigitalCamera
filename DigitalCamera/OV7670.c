@@ -66,23 +66,23 @@ bool CameraInit(){
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	failure |= WriteDefaults();
+	//failure |= WriteDefaults();
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	failure |= SetRGB565();
+	//failure |= SetRGB565();
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	failure |= SetQQVGA();
+	//failure |= SetQQVGA();
 	for (int delay = 0; delay <= 100000; delay++){
 			__nop();
 	}
-	
-	SetDisablePixelClockDuringBlankLines();
-  SetDisableHREFDuringBlankLines();
-  SetInternalClockPreScaler(internalClockPreScaler);
-  SetPLLMultiplier(pllMultiplier);
+
+	//SetDisablePixelClockDuringBlankLines();
+  //SetDisableHREFDuringBlankLines();
+  //SetInternalClockPreScaler(internalClockPreScaler);
+  //SetPLLMultiplier(pllMultiplier);
 	
 	return failure;
 }

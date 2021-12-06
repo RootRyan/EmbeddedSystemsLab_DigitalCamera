@@ -163,11 +163,11 @@ void Port_B_Init(void){
 
   // ----------------- Initialize PB3-0 as GPIO ---------
                                       
-  GPIO_PORTB_PCTL_R     &= ~0x0000FFFF;     // GPIO
-  GPIO_PORTB_DIR_R      |=  0x0F;           // make PB3-0 out
-  GPIO_PORTB_AFSEL_R    &= ~0x0F;           // regular port function
-  GPIO_PORTB_DEN_R      |=  0x0F;           // enable digital I/O on PB3-0
-  GPIO_PORTB_AMSEL_R    &= ~0x0F;           // disable analog functionality on PB3-0
+  GPIO_PORTB_PCTL_R     &= ~0xFFFFFFFF;     // GPIO
+  GPIO_PORTB_DIR_R      |=  0x00;           // make PB3-0 in
+  GPIO_PORTB_AFSEL_R    &= ~0xFF;           // regular port function
+  GPIO_PORTB_DEN_R      |=  0xFF;           // enable digital I/O on PB3-0
+  GPIO_PORTB_AMSEL_R    &= ~0xFF;           // disable analog functionality on PB3-0
   
   
   }
@@ -222,7 +222,7 @@ void Port_D_Init(void){
   GPIO_PORTD_PCTL_R      =(GPIO_PORTD_PCTL_R  
                          & 0x00FFFFFF)
                          | 0x11000000;      // configure PD6, PD7 as UART
- 
+/* 
    // ---------------  Initialize PD2 as AIN5  ----------------------------------  
    
   GPIO_PORTD_DIR_R      &= ~0x04;           // make PD2 input
@@ -237,7 +237,14 @@ void Port_D_Init(void){
   GPIO_PORTD_DEN_R      |=  0x0B;           // enable digital I/O on PD3,1,0
   GPIO_PORTD_PCTL_R      = (GPIO_PORTD_PCTL_R
                           & 0xFFFF0F00)
-                          + 0x00002022;
+                          + 0x00002022;*/
+													
+	GPIO_PORTD_PCTL_R      = (GPIO_PORTD_PCTL_R & 0xFFFFF000); // regular gpio on pd2-0
+  GPIO_PORTD_AMSEL_R    &= ~0x07;         // disable analog function 
+  GPIO_PORTD_DIR_R      &= ~0x07;         // inputs on Pd2-0
+  GPIO_PORTD_AFSEL_R    &= ~0x07;         // regular port function
+  GPIO_PORTD_PUR_R       =  0x07;         // enable pull-up on Pd2-0
+  GPIO_PORTD_DEN_R      |=  0x07;         // enable digital port 
 }
 
 // ----------------------------------------------------------------------------
@@ -268,21 +275,14 @@ void Port_E_Init(void){
 
  // ---------------  Initialize PE3,1,0 as GPIO  ---------------------------------  
 
-  GPIO_PORTE_DIR_R      |=  0x0A;           // output digital I/O on PE3,1
+  GPIO_PORTE_DIR_R      |=  0x0E;           // output digital I/O on PE3,1
   GPIO_PORTE_DIR_R      &= ~0x01;           // input digital I/O on PE0
-  GPIO_PORTE_AMSEL_R    &= ~0x0B;           // disable analog functionality on PE3,1,0
-  GPIO_PORTE_AFSEL_R    &= ~0x0B;           // disable alt funct on PE3,1,0
-  GPIO_PORTE_DEN_R      |=  0x0B;           // enable digital I/O on PE3,1,0
+  GPIO_PORTE_AMSEL_R    &= ~0x0F;           // disable analog functionality on PE3,1,0
+  GPIO_PORTE_AFSEL_R    &= ~0x0F;           // disable alt funct on PE3,1,0
+  GPIO_PORTE_DEN_R      |=  0x0F;           // enable digital I/O on PE3,1,0
   
   GPIO_PORTE_PCTL_R      = (GPIO_PORTE_PCTL_R 
-                         & 0xFFFF0F00);
-  
-// ---------------  Initialize PE2 as AIN1  ---------------------------------  
-  
-  GPIO_PORTE_DIR_R      &= ~0x04;           // make PE2 input
-  GPIO_PORTE_AFSEL_R    |=  0x04;           // enable alternate function on PE2
-  GPIO_PORTE_DEN_R      &= ~0x04;           // disable digital I/O on PE2
-  GPIO_PORTE_AMSEL_R    |=  0x04;           // enable analog functionality on PE2
+                         & 0xFFFF0000);
 }
   
 // ----------------------------------------------------------------------------
@@ -300,9 +300,9 @@ void Port_F_Init(void){
   
   GPIO_PORTF_AMSEL_R    = 0x00;             // disable analog on PF
   GPIO_PORTF_PCTL_R     = 0x00000000;       // PCTL GPIO on PF4-0
-  GPIO_PORTF_DIR_R      = 0x0E;             // PF4,PF0 in, PF3-1 out
+  GPIO_PORTF_DIR_R      = 0x01;             // PF4,PF0 in, PF3-1 out
   GPIO_PORTF_AFSEL_R    = 0x00;             // disable alt funct on PF7-0
-  GPIO_PORTF_PUR_R      = 0x11;             // enable pull-up on PF0 and PF4
+  GPIO_PORTF_PUR_R      = 0x01;             // enable pull-up on PF0 and PF4
   GPIO_PORTF_DEN_R      = 0x1F;             // enable digital I/O on PF4-0
 }
 

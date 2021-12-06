@@ -55,6 +55,8 @@ bool pinPrevActive[16] = {false,false,false,false,false,false,false,false,false,
 bool rotationLockEnabled = false;
 extern bool motorOn;
 extern int NextSt;
+bool cwTurn = false;
+bool ccwTurn = false;
 
 bool countdownEnabled = false;
 uint32_t countdownOptions[4] = {1,3,5,10};
@@ -141,43 +143,35 @@ void Blynk_to_TM4C(void){int j; char data;
 // - Output active picture countdown timer time (for viewing potential countdowns and it decrementing too)
 //
 
-		if(pin_num == 0x00)  {
-      capturePic = pin_int;
-			//use capturePic to determine if a picture must be taken
-      //PortF_Output(LED<<2); // Blue LED
-		} else if(pin_num == 0x01) { //next motor state output
-			NextSt = pin_int;
-			if(NextSt < 0) {
-				NextSt = 2;
-			}
-		} else if(pin_num == 0x02) { //motorOn button
-			if(pin_int == 1) {
-				motorOn = true;
-			} else {
-				motorOn = false;
-			}
-		}	
-		
 		switch(pin_num){
-			case 0x00: //SWITCH - stepper motor lock rotation
-				rotationLockEnabled = pin_int % 2;
+			case 0x00: //SWITCH - stepper motor lock rotation -- on/off
+				if (pin_int == 1) {
+					motorOn = true;
+				} else {
+					motorOn = false;
+					NextSt = 0;
+				}
 			case 0x01: //BUTTON - stepper motor rotate CW
-				if (rotationLockEnabled) {
-					pinPrevActive[1] = true;
-				} else if (pin_int == 1 && pinPrevActive[1] == false) {
-					//apply rotation
-					pinPrevActive[1] = true;
+				if (motorOn && !rotationLockEnabled && pin_int == 1) {
+					NextSt = 1;
+					rotationLockEnabled = false;
+					cwTurn = true;
 				} else if (pin_int == 0) {
-					pinPrevActive[1] = false;
+					rotationLockEnabled = true;
+					cwTurn = false;
+					if (ccwTurn == false)
+						NextSt = 0;
 				}
 			case 0x02: //BUTTON - stepper motor rotate CCW
-				if (rotationLockEnabled) {
-					pinPrevActive[1] = true;
-				} else if (pin_int == 1 && pinPrevActive[1] == false) {
-					//apply rotation
-					pinPrevActive[1] = true;
+				if (motorOn && rotationLockEnabled && pin_int == 1) {
+					NextSt = 2;
+					rotationLockEnabled = true;
+					ccwTurn = true;
 				} else if (pin_int == 0) {
-					pinPrevActive[1] = false;
+					rotationLockEnabled = false;
+					ccwTurn = false;
+					if (cwTurn == false)
+						NextSt = 0;
 				}
 			case 0x03: //SWITCH - enable/disable countdown timer
 				countdownEnabled = pin_int % 2; 
@@ -226,6 +220,8 @@ void Blynk_to_TM4C(void){int j; char data;
 			case 0x0F:
 			default: ;//some error happened if it reaches this since blynk to tm4c only uses virtual pins 0-15
 		}
+		if(rotationLockEnabled || (!cwTurn && !ccwTurn))
+			NextSt = 0;
 	}
 }
 
